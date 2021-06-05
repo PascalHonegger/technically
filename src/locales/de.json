@@ -1,0 +1,28 @@
+{
+	"nav": {
+		"routes": {
+			"home": "Start",
+			"about": "Über"
+		}
+	},
+	"home": {
+		"welcome": "Willkommen!"
+	},
+	"about": {
+		"description": "Was machen IT-Profis am liebsten? Natürlich das Korrigeren einer nicht ganz korrekten Aussage eines Arbeitskollegen, wenn möglich mithilfe von anderweitig nutzlosem Detailwissen.",
+		"what": "Was ist",
+		"how": "Wie spielt man",
+		"step1": "Arbeitskollegen sammeln",
+		"step2": "Für IT-Themen entscheiden",
+		"step3": "Ein Arbeitskollege liest die Aussage vor",
+		"step4": "Die anderen korriegen den Arbeitskollen mit einem Satz \"Technically, ...\"",
+		"step5": "...",
+		"step6": "Profit!"
+	},
+	"technically": {
+		"title": "Technically"
+	},
+	"footer": {
+		"visit": "Besuche <a href=\"{url}\">GitHub</a> um neue Aussagen vorzuschlagen"
+	}
+}
