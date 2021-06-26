@@ -32,7 +32,7 @@
 	}
 
 	function replaceLocale(path: string, newLocale: string) {
-		return path.replace(extractLocale(path), newLocale);
+		return path.replace(extractLocale(path) ?? '', newLocale);
 	}
 </script>
 
