@@ -1,4 +1,52 @@
 {
 	"i18n-ally.localesPaths": ["src/locales"],
-	"i18n-ally.keystyle": "nested"
+	"i18n-ally.keystyle": "nested",
+	"json.schemas": [
+		{
+			"fileMatch": ["/src/statements/*.json"],
+			"schema": {
+				"type": "object",
+				"properties": {
+					"language": { "type": "string", "enum": ["javascript"] },
+					"en": { "$ref": "#/definitions/statement", "description": "English translation" },
+					"de": { "$ref": "#/definitions/statement", "description": "German translation" }
+				},
+				"required": ["language", "en"],
+				"definitions": {
+					"statement": {
+						"type": "object",
+						"properties": {
+							"title": {
+								"type": "string",
+								"description": "A descriptive title"
+							},
+							"statement": {
+								"type": "string",
+								"description": "The core statement"
+							},
+							"code": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"description": "Code related to the statement"
+							},
+							"solution": {
+								"type": "string",
+								"description": "The solution / correction"
+							},
+							"tags": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"description": "Additional tags used for filtering"
+							}
+						},
+						"required": ["title", "statement"]
+					}
+				}
+			}
+		}
+	]
 }
