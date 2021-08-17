@@ -1,32 +1,37 @@
 {
-	"language": {
-		"de": "Deutsch",
-		"en": "English"
-	},
-	"nav": {
-		"routes": {
-			"home": "Home",
-			"about": "About"
-		}
-	},
-	"home": {
-		"welcome": "Welcome!"
-	},
-	"about": {
-		"description": "What do IT professionals like to do more than anything else? Well obviously it's using oddly specific knowledge to correct a not quite correct statement of a colleague.",
-		"what": "What is",
-		"how": "How Do You Play",
-		"step1": "Gather Colleagues",
-		"step2": "Decide on IT Subjects",
-		"step3": "A Colleague Reads The Statement",
-		"step4": "You Correct Your Colleage by Saying \"Technically, ...\"",
-		"step5": "...",
-		"step6": "Profit!"
-	},
-	"technically": {
-		"title": "Technically"
-	},
-	"footer": {
-		"visit": "Visit <a href=\"{url}\">GitHub</a> to propose new statements"
-	}
+  "language": {
+    "de": "Deutsch",
+    "en": "English"
+  },
+  "nav": {
+    "routes": {
+      "home": "Home",
+      "about": "About"
+    }
+  },
+  "home": {
+    "welcome": "Welcome!"
+  },
+  "about": {
+    "description": "What do IT professionals like to do more than anything else? Well obviously it's using oddly specific knowledge to correct a not quite correct statement of a colleague.",
+    "what": "What is",
+    "how": "How Do You Play",
+    "step1": "Gather Colleagues",
+    "step2": "Decide on IT Subjects",
+    "step3": "A Colleague Reads The Statement",
+    "step4": "You Correct Your Colleage by Saying \"Technically, ...\"",
+    "step5": "...",
+    "step6": "Profit!"
+  },
+  "technically": {
+    "title": "Technically"
+  },
+  "footer": {
+    "visit": "Visit <a href=\"{url}\">GitHub</a> to propose new statements"
+  },
+  "statement": {
+    "card": {
+      "details": "Go to statement"
+    }
+  }
 }

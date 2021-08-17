@@ -1,0 +1,22 @@
+{
+	"language": "javascript",
+	"en": {
+		"title": "The void operator",
+		"statement": "The `void` operator in JavaScript can be used to completely ignore any expression and return undefined instead.\nThe following code prints nothing except for the definition error.",
+		"code": [
+			"// Immediately void function definition and print nothing",
+			"void function test() {",
+			"  console.log('boo!');",
+			"}();",
+			"",
+			"// ReferenceError: test is not defined",
+			"test();"
+		],
+		"solution": "Technically, the expression after the void keyword is still evaluated, causing the code to print boo! before throwing an error."
+	},
+	"de": {
+		"title": "Der void-Operator",
+		"statement": "Der `void` Operator in JavaScript kann verwendet werden, um einen Ausdruck vollständig zu ignorieren und stattdessen `undefiniert` zurückzugeben.\nDer folgende Code gibt außer dem Definitionsfehler nichts aus.",
+		"solution": "Technisch gesehen wird der Ausdruck nach dem Schlüsselwort `void` immer noch ausgewertet, was dazu führt, dass der Code `boo!` ausgibt, bevor er einen Fehler auslöst."
+	}
+}

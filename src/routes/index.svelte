@@ -1,11 +1,8 @@
-<script lang="ts">
+<script lang="ts" type="module">
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
-	import { locale } from 'svelte-i18n';
 
 	onMount(() => {
-		locale.subscribe((l) => {
-			goto(`${l}`);
-		})();
+		goto('en', { replaceState: true });
 	});
 </script>

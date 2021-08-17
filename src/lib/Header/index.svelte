@@ -1,49 +1,50 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { base } from '$app/paths';
 	import { onDestroy } from 'svelte';
 	import { _, locale, locales } from 'svelte-i18n';
-	import type { Unsubscriber } from 'svelte/store';
+	import type { Page } from '@sveltejs/kit';
 
 	let routes: { path: string; label: string }[] = [];
-	let unsubscribeLocale: Unsubscriber;
-	let unsubscribePage: Unsubscriber;
 
-	unsubscribeLocale = locale.subscribe((l) => {
+	const unsubscribeLocale = locale.subscribe((l) => {
 		routes = [
-			{ path: `/${l}`, label: 'nav.routes.home' },
-			{ path: `/${l}/about`, label: 'nav.routes.about' }
+			{ path: `${base}/${l}`, label: 'nav.routes.home' },
+			{ path: `${base}/${l}/about`, label: 'nav.routes.about' }
 		];
 	});
-	unsubscribePage = page.subscribe((p) => {
-		locale.set(extractLocale(p.path));
+	const unsubscribePage = page.subscribe((p) => {
+		locale.set(extractLocale(p));
 	});
 
 	onDestroy(() => {
-		if (unsubscribeLocale != null) {
-			unsubscribeLocale();
-		}
-		if (unsubscribePage != null) {
-			unsubscribePage();
-		}
+		unsubscribeLocale();
+		unsubscribePage();
 	});
 
-	function extractLocale(path: string) {
-		return path.split('/')[1];
+	function extractLocale(page: Page) {
+		return page.path.substr(base.length).split('/')[1] ?? 'en';
 	}
 
-	function replaceLocale(path: string, newLocale: string) {
-		return path.replace(extractLocale(path) ?? '', newLocale);
+	function replaceLocale(page: Page, newLocale: string) {
+		const locale = extractLocale(page);
+		const newPath = page.path.replace(locale, newLocale);
+		const query = page.query.toString();
+		return query ? `${newPath}?${query}` : newPath;
 	}
 </script>
 
 <header
 	class="flex flex-row justify-between place-items-center p-6 mb-6 xl:rounded-b-md w-full xl:max-w-6xl bg-white bg-opacity-95 shadow-md"
 >
-	<a href="/" class="text-4xl font-serif font-semibold"> Technically </a>
+	<a href="{base}/" class="text-4xl font-serif font-semibold">Technically</a>
 	<nav class="flex flex-row space-x-6">
 		{#each routes as { path, label }}
-			<a sveltekit:prefetch href={path} class="nav-link" class:active={$page.path === path}
-				>{$_(label)}</a
+			<a
+				sveltekit:prefetch
+				href={path}
+				class="nav-link"
+				class:active={$page.path === path.split('?')[0]}>{$_(label)}</a
 			>
 		{/each}
 		<div class="border-r w-0 border-gray-600" />
@@ -51,7 +52,7 @@
 			<a
 				sveltekit:prefetch
 				sveltekit:noscroll
-				href={replaceLocale($page.path, localeOption)}
+				href={replaceLocale($page, localeOption)}
 				class="nav-link"
 				class:active={$locale === localeOption}>{$_(`language.${localeOption}`)}</a
 			>
